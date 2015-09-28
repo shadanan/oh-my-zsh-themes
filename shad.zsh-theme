@@ -15,4 +15,4 @@ function prompt_char {
 }
 
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(git_super_status)
-%{$fg[green]%}%*%{$reset_color%} [%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
+%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
