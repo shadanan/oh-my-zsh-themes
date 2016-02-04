@@ -14,5 +14,13 @@ function prompt_char {
 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
 }
 
-PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(git_super_status)
+function pyenv_status {
+	if hash pyenv 2> /dev/null; then
+		echo " [%{$fg_bold[black]%}$(pyenv version-name)%{$reset_color%}]"
+	else
+		''
+	fi
+}
+
+PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%}$(pyenv_status) $(git_super_status)
 %{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
