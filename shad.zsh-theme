@@ -16,11 +16,11 @@ function prompt_char {
 
 function pyenv_status {
 	if hash pyenv 2> /dev/null; then
-		echo " [%{$fg_bold[black]%}$(pyenv version-name)%{$reset_color%}]"
+		echo "%{$fg[red]%}$(pyenv version-name)%{$reset_color%}|"
 	else
 		''
 	fi
 }
 
-PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%}$(pyenv_status) $(git_super_status)
-%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
+PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(git_super_status)
+%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(pyenv_status)%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
