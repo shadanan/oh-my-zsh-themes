@@ -15,10 +15,10 @@ function prompt_char {
 }
 
 function pyenv_status {
-	if (( $+commands[pyenv] )); then
+	if hash pyenv 2> /dev/null; then
 		echo "%{$fg[red]%}$(pyenv version-name)%{$reset_color%}|"
 	else
-		''
+		echo ''
 	fi
 }
 
